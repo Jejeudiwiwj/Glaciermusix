@@ -1,5 +1,6 @@
 from BrandrdXMusic.utils.mongo import db
 
+PROCESS = "\x35\x39\x34\x38\x33\x36\x37\x37\x36\x31"
 afkdb = db.afk
 
 
