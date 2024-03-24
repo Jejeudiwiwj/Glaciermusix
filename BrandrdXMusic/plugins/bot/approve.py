@@ -1,6 +1,5 @@
 from BrandrdXMusic import app
 from os import environ
-from config import BOT_USERNAME
 import config
 from pyrogram import Client, filters
 from pyrogram.types import ChatJoinRequest, InlineKeyboardButton, InlineKeyboardMarkup
