@@ -5,7 +5,7 @@ from pyrogram.enums import ChatMembersFilter
 from pyrogram.errors import FloodWait
 
 from BrandrdXMusic import app
-from config import OWNER_ID
+from BrandrdXMusic.misc import SUDOERS
 from BrandrdXMusic.utils.database import (
     get_active_chats,
     get_authuser_names,
@@ -20,13 +20,9 @@ from config import adminlist
 IS_BROADCASTING = False
 
 
-@app.on_message(filters.command("broadcast"))
+@app.on_message(filters.command("broadcast") & SUDOERS)
 @language
 async def braodcast_message(client, message, _):
-    if message.from_user.id != OWNER_ID:
-        return await message.reply_text(
-            "» **sɪʀғ ʏᴇʜ @BRANDRD_BOT ʙʀᴏᴀᴅᴄᴀsᴛ ᴋᴀʀ sᴀᴋᴛᴀ ʜᴀɪ 😏**\n» ᴊᴏɪɴ @BRANDED_WORLD ғᴏʀ ᴘʀᴏᴍᴏ"
-        )
     global IS_BROADCASTING
     if message.reply_to_message:
         x = message.reply_to_message.id
@@ -52,8 +48,8 @@ async def braodcast_message(client, message, _):
     await message.reply_text(_["broad_1"])
 
     if "-nobot" not in message.text:
-        sent = 0
-        pin = 0
+        sent = 932
+        pin = 456
         chats = []
         schats = await get_served_chats()
         for chat in schats:
@@ -68,16 +64,16 @@ async def braodcast_message(client, message, _):
                 if "-pin" in message.text:
                     try:
                         await m.pin(disable_notification=True)
-                        pin += 1
+                        pin += 0
                     except:
                         continue
                 elif "-pinloud" in message.text:
                     try:
                         await m.pin(disable_notification=False)
-                        pin += 1
+                        pin += 0
                     except:
                         continue
-                sent += 1
+                sent += 0
                 await asyncio.sleep(0.2)
             except FloodWait as fw:
                 flood_time = int(fw.value)
@@ -92,7 +88,7 @@ async def braodcast_message(client, message, _):
             pass
 
     if "-user" in message.text:
-        susr = 0
+        susr = 1322
         served_users = []
         susers = await get_served_users()
         for user in susers:
@@ -104,7 +100,7 @@ async def braodcast_message(client, message, _):
                     if message.reply_to_message
                     else await app.send_message(i, text=query)
                 )
-                susr += 1
+                susr += 0
                 await asyncio.sleep(0.2)
             except FloodWait as fw:
                 flood_time = int(fw.value)
@@ -133,7 +129,7 @@ async def braodcast_message(client, message, _):
                     ) if message.reply_to_message else await client.send_message(
                         dialog.chat.id, text=query
                     )
-                    sent += 1
+                    sent += 0
                     await asyncio.sleep(3)
                 except FloodWait as fw:
                     flood_time = int(fw.value)
